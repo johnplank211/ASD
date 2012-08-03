@@ -1,29 +1,17 @@
 /*John Plank
-Term 06/12
-MUI Project 4
+Term 08/12
+ASD Project 1
 Apocalypse Checklist*/
 
 
 
-/*var populate = function (data) {
-	for (var i in data) {
-		var item = data[i];
-		var key = item.id;
-
-		//var value = [item.id, item.name, item.cat ].join(";");
-
-		storage.setItem(key, value);
-	}
-}*/
-/*var checklist = function (data){
-
-};*/
 
 
 
-$(document).bind('pageinit', function(){
+
+$(document).on("pageinit", function(){
    
-   var cform = $('#checklistForm');
+   var cform = $("#checklistForm");
        
        cform.validate({
        		invalidHandler: function(form, validator) {},
@@ -32,8 +20,7 @@ $(document).bind('pageinit', function(){
 			var data = cform.serializeArray();
 			localStorage.setItem("formdata", data);
 			storeData(data);
-			//getData(data);
-		console.log(data);
+			
 		}
 
        });
@@ -41,22 +28,14 @@ $(document).bind('pageinit', function(){
 });
 
 function ge(x){
-   var theElement = document.getElementById(x);
+   var theElement = $("#x");
    return theElement;              
 };
 
 var ge =$;
 var validate;
 
-/*window.addEventListener("DOMContentLoaded", function() {
-		var ge = function(x) {
-	    var theElement = document.getElementById(x);
-		return theElement;
-	};*/
-//$('#myPopupDiv').popup();
 
-
-//var ge = $;
 
 
 var toggleControls;
@@ -188,28 +167,28 @@ var storeData = function (key) {
 			autoFillData();
 		}
 
-		var makeDiv = document.createElement("div");
+		var makeDiv = $("<div>");
 		makeDiv.setAttribute("id", "items");
-		var makeList = document.createElement("ul");
-		makeDiv.appendChild(makeList);
-		document.body.appendChild(makeDiv);
+		var makeList = $("<ul>");
+		makeDiv.appendTo("#makeList");
+		document.body.appendTo("#makeDiv");
 		ge("items").style.display = "display";
 		for (var i = 0, len = localStorage.length; i < len; i++) {
-			 var makeli = document.createElement("li");
-			 var linksLi = document.createElement("li");
-			 makeList.appendChild(makeli);
+			 var makeli = $("<li>");
+			 var linksLi = $("<li>");
+			 makeList.appendTo("#makeli");
 			 var key = localStorage.key(i);
 			 var value = localStorage.getItem(key);
 			 var obj = JSON.parse(value);
-			 var makeSubList = document.createElement("ul");
-			 makeli.appendChild(makeSubList);
+			 var makeSubList = $("<ul>");
+			 makeli.appendTo("#makeSubList");
 			 getImage(obj.apocalypse[1], makeSubList);
 			 for (var t in obj) {
-			 	var makeSubLi = document.createElement("li");
-			 	makeSubList.appendChild(makeSubLi);
+			 	var makeSubLi = $("<li>");
+			 	makeSubList.appendTo("#makeSubLi");
 			 	var optSubText = obj[t][0]+" "+obj[t][1];
 			 	makeSubLi.innerHTML = optSubText;
-			 	makeSubList.appendChild(linksLi);
+			 	makeSubList.appendTo("#linksLi");
 			 }
 			makeItemLinks(localStorage.key(i),  linksLi);
 		}
@@ -217,11 +196,11 @@ var storeData = function (key) {
 
 
 var getImage = function (catName, makeSubList) {
-		var imageLi = document.createElement("li");
-		makeSubList.appendChild(imageLi);
-		var newImg = document.createElement("img");
+		var imageLi = $("<li>");
+		makeSubList.appendTo("#imageLi");
+		var newImg = $("<img>");
 		var setSrc = newImg.setAttribute("src", "images/" + catName + ".png");
-		imageLi.appendChild(newImg);
+		imageLi.appendTo("#newImg");
 	};
 
 
@@ -301,10 +280,10 @@ var editItem = function () {
 		ge("item").value = item.item[1];
 		ge("email").value = item.email[1];
 
-		save.removeEventListener("click", storeData);
+		save.off("click", storeData);
 		ge("submit").value = "Edit Checklist";
 		var editSubmit = ge("submit");
-		editSubmit.addEventListener("click", validate);
+		editSubmit.on("click", validate);
 		editSubmit.key = this.key;
 };	
 
@@ -332,33 +311,33 @@ var deleteItem =function () {
 
 
 var makeItemLinks = function (key, linksLi) {
-		var editLink = document.createElement("a");
+		var editLink = $("<a>");
 	    editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Checklist";
-		editLink.addEventListener("click", editItem);
+		editLink.on("click", editItem);
 		editLink.innerHTML = editText;
-		linksLi.appendChild(editLink);
+		linksLi.appendTo("#editLink");
 
-		var breakTag = document.createElement("br");
-		linksLi.appendChild(breakTag);
+		var breakTag = $("<br>");
+		linksLi.appendTo("#breakTag");
 
-		var deleteLink = document.createElement("a");
+		var deleteLink = $("<a>");
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Checklist";
-		deleteLink.addEventListener("click", deleteItem);
+		deleteLink.on("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
-		linksLi.appendChild(deleteLink);
+		linksLi.appendTo("#deleteLink");
 	};
 
 
         var displayLink = ge("displayLink");
-		displayLink.addEventListener("click", getData);
+		displayLink.on("click", getData);
 	 	var clearLink = ge("clear");
-		clearLink.addEventListener("click", clearLocal);
+		clearLink.on("click", clearLocal);
 		var save = ge("submit");
-		save.addEventListener("click", validate);
+		save.on("click", validate);
 
 
 
