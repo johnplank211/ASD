@@ -53,32 +53,6 @@ Apocalypse Checklist -->
 		
 	 	</div>
 
-<!-- <label for="flip-a">Select slider:</label>
-<select name="slider" id="flip-a" data-role="slider">
-	<option value="off">Off</option>
-	<option value="on"><a href="#popupLogin" data-rel="popup" data-role="button" data-inline="true">Form</a></option>
-
-</select> -->
-
-
-
-
-
-
-<!-- <div data-role="popup" id="popupLogin" data-overlay-theme="b" data-theme="a" class="ui-corner-all">
-            <form>
-                <div style="padding:10px 20px;">
-                  <h3>Please sign in</h3>
-                  <label for="un" class="ui-hidden-accessible">Username:</label>
-                  <input type="text" name="user" id="un" value="" placeholder="username" data-theme="a" />
-
-                  <label for="pw" class="ui-hidden-accessible">Password:</label>
-                  <input type="password" name="pw" id="pass" value="" placeholder="password" data-theme="a" />
-
-                  <button type="submit" data-theme="b">Sign in</button>
-                </div>
-            </form>
-        </div> -->
 
 
 
@@ -415,7 +389,180 @@ Apocalypse Checklist -->
 			</div>
 	</div>				
 
-	
+	<div data-role="page" id="form" data-add-back-btn="true" data-theme="a" >
+		<div data-role="header" data-role="fixed">
+			<!-- <img src="images/header2.png" > -->
+			<!-- </a> --> 
+		</div>
+			<div class="content">
+				
+				<form id="checklistForm" >
+
+
+				<div data-role="fieldcontain" >
+					<fieldset data-role="controlgroup" data-mini="true">
+						<legend><small>*Must be filled out</small></legend>
+							<br><h3>* Apocalypse</h3>
+						<input type="radio" value="Zombie" checked value="Zombie"name="apocalypse" id="apocalypse-1" data-theme="a" class="required"/>
+						<label for="apocalypse-1" >Zombie</label>
+
+						<input type="radio" value="Natural" name="apocalypse" id="apocalypse-2" data-theme="a" />
+						<label for="apocalypse-2" >Natural</label>
+
+						<input type="radio" value="Nuclear" name="apocalypse" id="apocalypse-3" data-theme="a" />
+						<label for="apocalypse-3" >Nuclear</label>
+
+						<input type="radio" value="Biblical" name="apocalypse" id="apocalypse-4" data-theme="a" />
+						<label for="apocalypse-4" >Biblical</label>
+
+						<input type="radio" value="Alien" name="apocalypse" id="apocalypse-5" data-theme="a"/>
+						<label for="apocalypse-5" >Alien</label>
+					
+					</fieldset>
+
+				</div>
+
+				<div data-role="fieldcontain"  >
+					<fieldset data-role="controlgroup" data-mini="true"  >
+						<h3>Checklist Items</h3>
+						<input type="checkbox" value="Firearm" checked value="Firearm" name="firearm" id="firearm" data-theme="a"/>
+						<label for="firearm" >Firearm</label>
+
+						<input type="checkbox" value="Ammo" checked value="Ammo" name="items" id="item-2" data-theme="a"/>
+						<label for="item-2" >Ammo</label>
+
+						<input type="checkbox" value="Melee Weapon" name="item" id="item-3" data-theme="a"/>
+						<label for="item-3" >Melee Weapon</label>
+
+						<input type="checkbox" value="P38" name="items" id="item-4" data-theme="a"/>
+						<label for="item-4" data-theme="a">P38</label>
+
+						<input type="checkbox" value="Intestinal Fortitude" checked value="Intestinal Fortitude" name="item" id="item-5" data-theme="a"/>
+						<label for="item-5" >Intestinal Fortitude</label>
+
+						<input type="checkbox" value="P38" name="items" id="item-6" data-theme="a"/>
+						<label for="item-6" >Canned Food</label>
+
+						<input type="checkbox" value="P38" name="items" id="item-7" data-theme="a"/>
+						<label for="item-7" >Leatherman</label>
+
+						<input type="checkbox" value="Topographical Map" name="item" id="item-8" data-theme="a" />
+						<label for="item-8" >Topographical Map</label>
+
+						<input type="checkbox" value="Rucksack" name="items" id="item-9" data-theme="a" />
+						<label for="item-9" >Rucksack</label>
+
+						<input type="checkbox" value="Water" name="items" id="item-10" data-theme="a" />
+						<label for="item-10" >Water</label>
+
+						<input type="checkbox" value="Chain Mesh Suite" name="items" id="item-11" data-theme="a"/>
+						<label for="item-11" >Chain mesh suite</label>
+
+						<input type="checkbox" value="Boots" name="items" id="item-12" data-theme="a"/>
+						<label for="item-12" >Boots</label>
+
+						<input type="checkbox" value="Matches" name="items" id="item-13" data-theme="a"/>
+						<label for="item-13" >Matches</label>
+					
+					</fieldset>
+
+				</div>
+
+				<div>
+					<label for="mydate">*Date The World Ended</label>
+
+					<input name="mydate" id="mydate" type="date" data-role="datebox"
+					   data-options='{"mode": "calbox"}' default value="12/21/2012" data-theme="a" class="required date" >
+				</div>
+		
+
+				<div data-role="fieldcontain">
+					<label for="readiness">Readiness:</label>
+					<input type="range" name="readiness" id="readiness" value="3" min="0" max="11" data-theme="a"/>
+				</div>
+
+				
+				<div data-role="fieldcontain">
+					<label for="email">*Email Address:</label>
+					<input type="text" name="email" id="email" placeholder="notGonnamake@dead.com" class="required email" data-theme="a"/>
+				</div>
+
+				<div data-role="fieldcontain" >
+					<label for="comments">*Death Letter:</label>
+					<textarea placeholder="I tried my best but my best sucked!" data-theme="a" class="required" ></textarea>
+				</div>
+
+				<div data-role="fieldcontain" >
+					<label for="fearGroups">Fear Level</label>
+					<select name="fearGroups" id="select" data-native-menu="false" data-theme="a" >
+						<option data-placeholder=" true" >Please Choose Your Fear Level</option>
+						<option value="denial" >This can't be happening</option>
+						<option value="scared" >Oops I crapped my pants</option>
+						<option value="courage" >Psalms 144:1</option>
+					</select>
+				</div>
+
+				<div data-role="page" id="savedData" data-add-back-btn="true" data-theme="a" >
+					<div data-role="header" data-role="fixed">
+					<!-- <img src="images/header2.png" >
+					</a>  -->
+					</div>
+						<div class="content">
+							<ul id="checklistData" data-role="listview">
+
+							</ul>
+
+						</div>
+						<div data-role="footer" data-position="fixed" data-id="x" >
+							<div data-role="navbar" >
+								<ul>
+									<li><a href="#home" data-icon="star" >Home</a></li>
+									<li><a href="#news" data-icon="star">End News</a></li>
+									<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
+								</ul>
+						</div>
+						</div>
+				</div>
+
+				<div data-role="fieldcontain">
+			    	<ul>
+				    	<li><a href="#" id="clear">Clear Stored Data</a></li>
+				    	<li><a href="#" id="displayLink">Display data</a></li>
+				    	<!-- <li><a href="addItem2.html" id="addNew" style="display:none;">Add More Life</a></li> -->
+			   		</ul>
+			   </div> 
+
+				<div data-role="footer" data-position="fixed" data-id="x" >
+				<div data-role="navbar" >
+					<ul>
+						<li><a href="index.html" data-icon="star" >Home</a></li>
+						<!-- <li><a href="index#storage.html" data-icon="star">Storage</a></li> -->
+						<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
+					</ul>
+				</div>
+			</div> 
+
+<!-- style="display:none;" -->
+				<div>
+					<input type="submit" value="Save my life" id="submit" data-theme="a" data-inline="true"/>
+					<input type="reset" value="Reset" data-theme="a" data-inline="true" />
+
+				</div>
+			
+		</form>
+
+			</div>
+
+			<div data-role="footer" data-position="fixed" data-id="x" >
+				<div data-role="navbar" >
+					<ul>
+						<li><a href="#home" data-icon="star" >Home</a></li>
+						<li><a href="#news" data-icon="star">End News</a></li>
+						<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
+					</ul>
+			</div>
+			</div>
+	</div>
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 		<script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>

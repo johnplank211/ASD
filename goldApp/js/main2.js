@@ -4,11 +4,6 @@ ASD Project 1
 Apocalypse Checklist*/
 
 
-
-
-
-
-
 $(document).on("pageinit", function(){
    
    var cform = $("#checklistForm");
@@ -27,18 +22,18 @@ $(document).on("pageinit", function(){
 
 });
 
-function ge(x){
+/*function ge(x){
    var theElement = $("#x");
    return theElement;              
-};
+};*/
 
-var ge =$;
+//var ge =$;
 var validate;
 
 
 
 
-var toggleControls;
+//var toggleControls;
 //gets radio elements if checked
 	var getRadio = function () {
 		var radio = document.forms[0].apocalypse;
@@ -52,68 +47,68 @@ var toggleControls;
 
 //gets checkbox if they are checked
 	var getCheckBoxValue = function () {
-		if(ge("firearm").checked){
-			firearmValue = ge("firearm").value;
+		if($("firearm").checked){
+			firearmValue = $("#firearm").value;
 		}else{
 			firearmValue = "No"
 		}
-		if(ge("ammo").checked){
-			ammoValue = ge("ammo").value;
+		if($("#ammo").checked){
+			ammoValue = $("#ammo").value;
 		}else{
 			ammoValue = "No"
 		}
-		if(ge("meleeWeapon").checked){
-			meleeWeaponValue = ge("meleeWeapon").value;
+		if($("#meleeWeapon").checked){
+			meleeWeaponValue = $("#meleeWeapon").value;
 		}else{
 			meleeWeaponValue = "No"
 		}
-		if(ge("cannedFood").checked){
-			cannedValue = ge("cannedFood").value;
+		if($("#cannedFood").checked){
+			cannedValue = $("#cannedFood").value;
 		}else{
 			cannedValue = "No"
 		}
-		if(ge("water").checked){
-			waterValue = ge("water").value;
+		if($("#water").checked){
+			waterValue = $("#water").value;
 		}else{
 			waterValue = "No"
 		}
-		if(ge("chainMeshSuit").checked){
-			chainMeshSuitValue = ge("chainMeshSuit").value;
+		if($("#chainMeshSuit").checked){
+			chainMeshSuitValue = $("#chainMeshSuit").value;
  		}else{
 			chainMeshSuitValue = "No"
 		}
-		if(ge("topographicalMap").checked){
-			topographicalMapValue = ge("topographicalMap").value;
+		if($("#topographicalMap").checked){
+			topographicalMapValue = $("#topographicalMap").value;
 		}else{
 			topographicalMapValue = "No"
 		}
-		if(ge("leatherman").checked){
-			leathermanValue = ge("leatherman").value;
+		if($("#leatherman").checked){
+			leathermanValue = $("#leatherman").value;
 		}else{
 			leathermanValue = "No"
 		}
-		if(ge("rucksack").checked){
-			rucksackValue = ge("rucksack").value;
+		if($("#rucksack").checked){
+			rucksackValue = $("#rucksack").value;
 		}else{
 			rucksackValue = "No"
 		}
-		if(ge("boots").checked){
-			bootsValue = ge("boots").value;
+		if($("#boots").checked){
+			bootsValue = $("#boots").value;
 		}else{
 			bootsValue = "No"
 		}
-		if(ge("matches").checked){
-			matchesValue = ge("matches").value;
+		if($("#matches").checked){
+			matchesValue = $("#matches").value;
 		}else{
 			matchesValue = "No"
 		}
-		if(ge("p38").checked){
-			p38Value = ge("p38").value;
+		if($("#p38").checked){
+			p38Value = $("#p38").value;
 		}else{
 			p38Value = "No"
 		}
-		if(ge("intestinalFortitude").checked){
-			intestinalFortitudeValue = ge("intestinalFortitude").value;
+		if($("#intestinalFortitude").checked){
+			intestinalFortitudeValue = $("#intestinalFortitude").value;
 		}else{
 			intestinalFortitudeValue = "No"
 		}
@@ -134,7 +129,7 @@ var storeData = function (key) {
 		getRadio();
 		var item 			= {};
 		    item.apocalypse = ["Apocalypse:", apocalypseValue];
-			item.fear       = ["Fear level:", ge("groups").value];
+			item.fear       = ["Fear level:", $("#groups").value];
 			item.firearm	= ["Firearm:", firearmValue];
 			item.ammo		= ["Ammo:", ammoValue];
 			item.melee 		= ["Melee weapon:", meleeWeaponValue];
@@ -149,14 +144,17 @@ var storeData = function (key) {
 			item.p38		= ["P38:", p38Value];
 			item.intestinal = ["Intestinal Fortitude:", intestinalFortitudeValue];
 			//item.item		= ["Item:", ge("item").value];			
-			item.date       = ["World Ended:", ge("date").value];
-			item.email		= ["Email:", ge("email").value];
-			item.comments	= ["Comments:", ge("comments").value];
-			item.readiness  = ["Readiness:", ge("readiness").value];
+			item.date       = ["World Ended:", $("#date").value];
+			item.email		= ["Email:", $("#email").value];
+			item.comments	= ["Comments:", $("#comments").value];
+			item.readiness  = ["Readiness:", $("#readiness").value];
 
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Checklist Saved!");
 	console.log(item);
+	
+
+
 	};
 
 
@@ -167,14 +165,10 @@ var storeData = function (key) {
 			autoFillData();
 		}
 
-		var makeDiv = $("<div>");
-		makeDiv.setAttribute("id", "items");
-		var makeList = $("<ul>");
-		makeDiv.appendTo("#makeList");
-		document.body.appendTo("#makeDiv");
-		ge("items").style.display = "display";
+		var checklistData = $("#checklistData");
+		
 		for (var i = 0, len = localStorage.length; i < len; i++) {
-			 var makeli = $("<li>");
+			 $("<li>").appendTo(checklistData);
 			 var linksLi = $("<li>");
 			 makeList.appendTo("#makeli");
 			 var key = localStorage.key(i);
@@ -183,23 +177,24 @@ var storeData = function (key) {
 			 var makeSubList = $("<ul>");
 			 makeli.appendTo("#makeSubList");
 			 getImage(obj.apocalypse[1], makeSubList);
-			 for (var t in obj) {
+			 /*for (var t in obj) {
 			 	var makeSubLi = $("<li>");
 			 	makeSubList.appendTo("#makeSubLi");
 			 	var optSubText = obj[t][0]+" "+obj[t][1];
-			 	makeSubLi.innerHTML = optSubText;
+			 	makeSubLi.html = optSubText;
 			 	makeSubList.appendTo("#linksLi");
-			 }
-			makeItemLinks(localStorage.key(i),  linksLi);
+			 }*/
+			//makeItemLinks(localStorage.key(i),  linksLi);
+			console.log(i);
 		}
 	};
 
 
 var getImage = function (catName, makeSubList) {
-		var imageLi = $("<li>");
+		var imageLi = $("#<li>");
 		makeSubList.appendTo("#imageLi");
-		var newImg = $("<img>");
-		var setSrc = newImg.setAttribute("src", "images/" + catName + ".png");
+		var newImg = $("#<img>");
+		var setSrc = newImg.attr("src", "images/" + catName + ".png");
 		imageLi.appendTo("#newImg");
 	};
 
@@ -221,68 +216,68 @@ var editItem = function () {
 		var radio = document.forms[0].apocalypse;
 		for (var i = 0; i<radio.length; i++) {
 			if (radio[i].value == "Natural" && item.apocalypse[1] == "Natural") {
-				radio[i].setAttribute("checked", "checked");
+				radio[i].attr("checked", "checked");
 			} else if (radio[i].value == "Atomic" && item.apocalypse[1] == "Atomic") {
-				radio[i].setAttribute("checked", "checked");
+				radio[i].attr("checked", "checked");
 			} else if (radio[i].value == "Zombie" && item.apocalypse[1] == "Zombie") {
-				radio[i].setAttribute("checked", "checked");
+				radio[i].attr("checked", "checked");
 			} else if (radio[i].value == "Aliens" && item.apocalypse[1] == "Aliens") {
-				radio[i].setAttribute("checked", "checked");
+				radio[i].attr("checked", "checked");
 			} else if (radio[i].value == "Biblical" && item.apocalypse[1] == "Biblical") {
-				radio[i].setAttribute("checked", "checked");
+				radio[i].attr("checked", "checked");
 		}	
 		};		
 
 		if(item.firearm[1] == "yes") {
-			ge("firearm").setAttribute("checked", "checked");
+			$("#firearm").attr("checked", "checked");
 		}
 		if(item.ammo[1] == "yes") {
-			ge("ammo").setAttribute("checked", "checked");
+			$("#ammo").attr("checked", "checked");
 		}
 		if(item.melee[1] == "yes") {
-			ge("meleeWeapon").setAttribute("checked", "checked");
+			$("#meleeWeapon").attr("checked", "checked");
 		}
 		if(item.canned[1] == "yes") {
-			ge("cannedFood").setAttribute("checked", "checked");
+			$("#cannedFood").attr("checked", "checked");
 		}
 		if(item.water[1] == "yes") {
-			ge("water").setAttribute("checked", "checked");
+			$("#water").attr("checked", "checked");
 		}
 		if(item.chain[1] == "yes") {
-			ge("chainMeshSuit").setAttribute("checked", "checked");
+			$("#chainMeshSuit").attr("checked", "checked");
 		}
 		if(item.map[1] == "yes") {
-			ge("topographicalMap").setAttribute("checked", "checked");
+			$("#topographicalMap").attr("checked", "checked");
 		}
 		if(item.leatherman[1] == "yes") {
-			ge("leatherman").setAttribute("checked", "checked");
+			$("#leatherman").attr("checked", "checked");
 		}
 		if(item.rucksack[1] == "yes") {
-			ge("rucksack").setAttribute("checked", "checked");
+			$("#rucksack").attr("checked", "checked");
 		}
 		if(item.boots[1] == "yes") {
-			ge("boots").setAttribute("checked", "checked");
+			$("#boots").attr("checked", "checked");
 		}
 		if(item.matches[1] == "yes") {
-			ge("matches").setAttribute("checked", "checked");
+			$("#matches").attr("checked", "checked");
 		}
 		if(item.p38[1] == "yes") {
-			ge("p38").setAttribute("checked", "checked");
+			$("#p38").attr("checked", "checked");
 		}
 		if(item.intestinal[1] == "yes") {
-			ge("intestinalFortitude").setAttribute("checked", "checked");
+			$("#intestinalFortitude").attr("checked", "checked");
 		}
 
-		ge("readiness").value = item.readiness[1]; 
-		ge("date").value = item.date[1];
-		ge("comments").value = item.comments[1];
-		ge("groups").value = item.fear[1];     		
-		ge("item").value = item.item[1];
-		ge("email").value = item.email[1];
+		$("#readiness").value = item.readiness[1]; 
+		$("#date").value = item.date[1];
+		$("#comments").value = item.comments[1];
+		$("#groups").value = item.fear[1];     		
+		$("#item").value = item.item[1];
+		$("#email").value = item.email[1];
 
 		save.off("click", storeData);
-		ge("submit").value = "Edit Checklist";
-		var editSubmit = ge("submit");
+		$("#submit").value = "Edit Checklist";
+		var editSubmit = $("#submit");
 		editSubmit.on("click", validate);
 		editSubmit.key = this.key;
 };	
@@ -316,7 +311,7 @@ var makeItemLinks = function (key, linksLi) {
 		editLink.key = key;
 		var editText = "Edit Checklist";
 		editLink.on("click", editItem);
-		editLink.innerHTML = editText;
+		editLink.html = editText;
 		linksLi.appendTo("#editLink");
 
 		var breakTag = $("<br>");
@@ -327,16 +322,16 @@ var makeItemLinks = function (key, linksLi) {
 		deleteLink.key = key;
 		var deleteText = "Delete Checklist";
 		deleteLink.on("click", deleteItem);
-		deleteLink.innerHTML = deleteText;
+		deleteLink.html = deleteText;
 		linksLi.appendTo("#deleteLink");
 	};
 
 
-        var displayLink = ge("displayLink");
+        var displayLink = $("#displayLink");
 		displayLink.on("click", getData);
-	 	var clearLink = ge("clear");
+	 	var clearLink = $("#clear");
 		clearLink.on("click", clearLocal);
-		var save = ge("submit");
+		var save = $("#submit");
 		save.on("click", validate);
 
 
