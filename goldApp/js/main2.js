@@ -159,35 +159,47 @@ var storeData = function (key) {
 
 
 	var getData = function () {
+		//changePage("savedData");
 		//toggleControls("on");
 		if (localStorage.length === 0) {
 			alert("There is no data in Local Storage so data was added. ");
 			autoFillData();
 		}
 
-		var checklistData = $("#checklistData");
-		
+		var savedData = $("#savedData");
+		//console.log(savedData);
 		for (var i = 0, len = localStorage.length; i < len; i++) {
-			 $("<li>").appendTo(checklistData);
-			 var linksLi = $("<li>");
-			 makeList.appendTo("#makeli");
+			 $("<li>").append(savedData);
+			 //var linksLi = $("<li>");
+			 //makeList.appendTo("#makeli");
 			 var key = localStorage.key(i);
 			 var value = localStorage.getItem(key);
+
 			 var obj = JSON.parse(value);
-			 var makeSubList = $("<ul>");
-			 makeli.appendTo("#makeSubList");
-			 getImage(obj.apocalypse[1], makeSubList);
-			 /*for (var t in obj) {
-			 	var makeSubLi = $("<li>");
-			 	makeSubList.appendTo("#makeSubLi");
-			 	var optSubText = obj[t][0]+" "+obj[t][1];
-			 	makeSubLi.html = optSubText;
-			 	makeSubList.appendTo("#linksLi");
-			 }*/
+			 //console.log(key, value, obj);
+			 //var makeSubList = $("<ul>");
+			 //makeli.appendTo("#makeSubList");
+			 //getImage(obj.apocalypse[1], makeSubList);
+			 for (var t in obj) {
+			 	$("<p>" + obj[t][0]+ "</p>").append(savedData);
+			 	// var makeSubLi = $("<li>");
+			 	// makeSubList.appendTo("#makeSubLi");
+			 	// var optSubText = obj[t][0]+" "+obj[t][1];
+			 	// makeSubLi.html = optSubText;
+			 	// makeSubList.appendTo("#linksLi");
+			 }
 			//makeItemLinks(localStorage.key(i),  linksLi);
-			console.log(i);
+			//console.log(i);
 		}
+		//changePage("savedData");
+		//refreshList();
+		console.log(obj);	
 	};
+
+function refreshList(){
+	console.log('List refreshed');
+	$("#checklistData").listview('refresh');
+};
 
 
 var getImage = function (catName, makeSubList) {
@@ -326,6 +338,62 @@ var makeItemLinks = function (key, linksLi) {
 		linksLi.appendTo("#deleteLink");
 	};
 
+var changePage = function(pageId){
+		//console.log(pageId);
+		$('#'+ pageId).trigger('pageinit');
+		$.mobile.changePage($('#' + pageId), {transition:"slide"});
+};
+
+
+
+
+$('#json').on('click', function(){
+			
+			$('<h2>').html('JSON starts here').appendTo('#items');
+			$.ajax({
+				url: 'data.json',
+				type: 'GET',
+				dataType: 'json',
+				success: function(answer){
+					console.log(answer);
+
+					for (var i=0, j=answer.data1.length; i<j; i++){
+						
+						console.log(j);
+						var jdata = answer.data1[i];
+						console.log(answer);
+
+						$(''+
+							'<li>'+ 
+								jdata.fear +'<br />'+
+								jdata.apocalypse +'<br />'+
+								jdata.firearm +'<br />'+
+								jdata.ammo +'<br />'+
+								jdata.water +'<br />'+
+								jdata.p38 +'<br /><br />'+
+							'</li>'
+						).appendTo('#items');
+						console.log(answer);
+					}
+				}
+			});
+			//return false;
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         var displayLink = $("#displayLink");
 		displayLink.on("click", getData);
@@ -333,9 +401,4 @@ var makeItemLinks = function (key, linksLi) {
 		clearLink.on("click", clearLocal);
 		var save = $("#submit");
 		save.on("click", validate);
-
-
-
-
-
-
+		

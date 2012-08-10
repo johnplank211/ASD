@@ -20,6 +20,11 @@ Apocalypse Checklist -->
 		
 		<link href="css/style.css" rel="stylesheet"/> 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+		
+		<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+
+
 		<link rel="stylesheet" href="css/style.css" />
 		
 		<script src="js/libs/modernizr.custom.min.js"></script>
@@ -34,7 +39,8 @@ Apocalypse Checklist -->
 		</div>
 
 		<div data-role="content" >
-			<a href="addItem2.html" data-ajax"false">
+			
+			<a href="#form" data-ajax"false" >
 			<img src="images/Header.png" >
 			</a> 
  
@@ -52,10 +58,26 @@ Apocalypse Checklist -->
 	   	
 		
 	 	</div>
-
-
-
-
+		<div id="ajax">
+					<div>
+						<div>
+							
+							<div class="button">
+								<a href="#" data-role="button" id="json">JSON</a>
+							</div>
+							<div class="button">
+								<a href="#" data-role="button" id="xml">XML</a>
+							</div>
+							<div class="button">
+								<a href="#" data-role="button" id="csv">CSV</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul id="items" data-role="listview" data-theme="d"></ul>
+				<div >
+				</div>
+			</div>
 
 	   	<div data-role="footer" data-position="fixed" data-id="x" >
 	
@@ -70,6 +92,67 @@ Apocalypse Checklist -->
 	    
 	</div>
 	</div>
+	
+
+
+	<!-- <div data-role="page" id="ajax" data-add-back-btn="true" data-theme="a" >
+		<div data-role="header" data-role="fixed">
+			
+		</div>
+			<div class="content" id="ajax">
+				<ul>
+					<li><input type="button" value="JSON" id="json" data-theme="a" data-inline="true"/></li>
+					<li><input type="button" value="CSV" id="csv" data-theme="a" data-inline="true" /></li>
+					<li><input type="button" value="XML" id="xml" data-theme="a" data-inline="true" />
+					</ul></li>
+			</div>
+			
+			<ul id="items" data-role="listview" data-theme="d"></ul>
+			<div id="json">
+			</div>
+
+
+			<div data-role="footer" data-position="fixed" data-id="x" >
+				<div data-role="navbar" >
+					<ul>
+						<li><a href="#home" data-icon="star" >Home</a></li>
+						<li><a href="#news" data-icon="star">End News</a></li>
+						<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
+					</ul>
+			</div>
+			</div>
+	</div>  -->
+
+
+<div data-role="page" id="savedData" data-add-back-btn="true" data-theme="a" >
+		<div data-role="header" data-role="fixed">
+			
+		</div>
+			
+			
+			
+			<ul id="items" data-role="listview" data-theme="d"></ul>
+			<div>
+				<ul id="json">
+
+				</ul>
+			</div>
+
+
+			<div data-role="footer" data-position="fixed" data-id="x" >
+				<div data-role="navbar" >
+					<ul>
+						<li><a href="#home" data-icon="star" >Home</a></li>
+						<li><a href="#news" data-icon="star">End News</a></li>
+						<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
+					</ul>
+			</div>
+			</div>
+		</div>
+
+
+
+
 	<div data-role="page" id="zombie" data-add-back-btn="true" data-theme="a" >
 		<div data-role="header" data-role="fixed">
 			<img src="images/header2.png" >
@@ -87,6 +170,8 @@ Apocalypse Checklist -->
 		   		<p>Zombie Land, 28 days and weeks Later, Dawn of the Dead, Resident Evil movies, I am Legend, Shaun of the Dead(just because it's funny), and the original Night of the Living Dead.</p>
 		   	</div>
 			</div>
+			
+
 			<div data-role="footer" data-position="fixed" data-id="x" >
 				<div data-role="navbar" >
 					<ul>
@@ -394,7 +479,7 @@ Apocalypse Checklist -->
 			<!-- <img src="images/header2.png" > -->
 			<!-- </a> --> 
 		</div>
-			<div class="content">
+		<div class="content">
 				
 				<form id="checklistForm" >
 
@@ -472,7 +557,7 @@ Apocalypse Checklist -->
 					<label for="mydate">*Date The World Ended</label>
 
 					<input name="mydate" id="mydate" type="date" data-role="datebox"
-					   data-options='{"mode": "calbox"}' default value="12/21/2012" data-theme="a" class="required date" >
+					   data-options='{"mode": "calbox"}' default-value="12/21/2012" data-theme="a" class="required date" >
 				</div>
 		
 
@@ -502,27 +587,7 @@ Apocalypse Checklist -->
 					</select>
 				</div>
 
-				<div data-role="page" id="savedData" data-add-back-btn="true" data-theme="a" >
-					<div data-role="header" data-role="fixed">
-					<!-- <img src="images/header2.png" >
-					</a>  -->
-					</div>
-						<div class="content">
-							<ul id="checklistData" data-role="listview">
-
-							</ul>
-
-						</div>
-						<div data-role="footer" data-position="fixed" data-id="x" >
-							<div data-role="navbar" >
-								<ul>
-									<li><a href="#home" data-icon="star" >Home</a></li>
-									<li><a href="#news" data-icon="star">End News</a></li>
-									<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
-								</ul>
-						</div>
-						</div>
-				</div>
+				
 
 				<div data-role="fieldcontain">
 			    	<ul>
@@ -532,16 +597,16 @@ Apocalypse Checklist -->
 			   		</ul>
 			   </div> 
 
-				<div data-role="footer" data-position="fixed" data-id="x" >
+				<!-- <div data-role="footer" data-position="fixed" data-id="x" >
 				<div data-role="navbar" >
 					<ul>
 						<li><a href="index.html" data-icon="star" >Home</a></li>
-						<!-- <li><a href="index#storage.html" data-icon="star">Storage</a></li> -->
+
 						<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
 					</ul>
 				</div>
 			</div> 
-
+ -->
 <!-- style="display:none;" -->
 				<div>
 					<input type="submit" value="Save my life" id="submit" data-theme="a" data-inline="true"/>
@@ -549,20 +614,21 @@ Apocalypse Checklist -->
 
 				</div>
 			
-		</form>
+		</form> 
 
-			</div>
+		</div>
 
-			<div data-role="footer" data-position="fixed" data-id="x" >
+		<div data-role="footer" data-position="fixed" data-id="x" >
 				<div data-role="navbar" >
 					<ul>
 						<li><a href="#home" data-icon="star" >Home</a></li>
 						<li><a href="#news" data-icon="star">End News</a></li>
 						<li><a href="http://johnplank211.github.com/mdv-projects/MiU/week-4/bronzeApp/index.html" data-icon="star">git</a></li>
 					</ul>
-			</div>
-			</div>
+        		</div>
+		</div>
 	</div>
+			
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 		<script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
@@ -574,14 +640,6 @@ Apocalypse Checklist -->
 		
 		<script type="text/javascript" src="js/json.js"></script>
 		<script type="text/javascript" src="js/main2.js"></script>
-	    	
-	    
-
-		
-		
+	    			
 	</body>
 </html>
-
-
-
-		
