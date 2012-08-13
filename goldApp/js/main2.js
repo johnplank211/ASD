@@ -377,10 +377,55 @@ $('#json').on('click', function(){
 					}
 				}
 			});
-			//return false;
 	});
 
+	$('#csv').on('click', function(){
+		//$('#xmldiv').empty();
+		$('<h2>').html('CSV starts here').appendTo('#items');
+		$.ajax({
+			url: 'data.csv',
+			type: 'GET',
+			dataType: 'text',
+			success: function(answer) {
+			// splits data at new line
+				var line = answer.split('\n');
+				for (var i = 1, j = line.length; i <j; i++) {
+					var obj = line[i];
+					// splits each of the objects after the comma
+					var item = obj.split(',');
+					var itemList = $(
+						'<li>' +
+						'Apocalypse:' + item[0] + 
+						"Firearm: " + item[1] + 
+						"Ammo: " + item[2] +
+						'</li>'
+					).appendTo('#items');
+				}	
+			}
+		});
+		return false;
+	});
 
+	$('#xml').on('click', function(){
+		$('<h2>').html('XML starts here').appendTo('#items');
+			$.ajax({
+			url: "data.xml",
+			type: "GET",
+			dataType: "xml",
+			success: function(xml) {
+				console.log(xml);
+				$(xml).find('item').each(function(){
+					var id = $(this).attr('id');
+					var firearm = $(this).find('firearm').text();
+					var ammo = $(this).find('ammo').text();
+					var apocalypse = $(this).find('apocalypse').text();
+					$('<div class="profViews" id="item'+id+'"></div>')
+						.html('<div>'+ apocalypse + '<br>' + firearm + '<br>' + ammo +'</div>')
+						.appendTo('#items');
+				});
+			}
+		});
+	});
 
 
 

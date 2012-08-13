@@ -1,4 +1,32 @@
-<?xml version = 1.0 ?>
- <?xml-stylesheet type = text/xsl href= Basic.xsl?> 
- <Basic> Hello, Welcome To The XML World. </Basic>
+<?xml version="1.0" encoding="UTF-8"?>
 
+
+
+
+ <items>
+	<item id="item">		
+		<apocalypse>Apocalypse: Zombie, </apocalypse>
+		<firearm>Firearm: yes, </firearm>
+		<ammo>Ammo: yes </ammo>
+	</item>
+	<item id="item">		
+		<apocalypse>Apocalypse: Biblical, </apocalypse>
+		<firearm>Firearm: no, </firearm>
+		<ammo>Ammo: no </ammo>	
+	</item>
+	<item id="item">		
+		<apocalypse>Apocalypse: Natural, </apocalypse>
+		<firearm>Firearm: no, </firearm>
+		<ammo>Ammo: no </ammo>		
+	</item>
+	<item id="item">		
+		<apocalypse>Apocalypse: Nuclear, </apocalypse>
+		<firearm>Firearm: yes, </firearm>
+		<ammo>Ammo: yes </ammo>	
+	</item>
+	<item id="item">		
+		<apocalypse>Apocalypse: Alien, </apocalypse>
+		<firearm>Firearm: yes, </firearm>
+		<ammo>Ammo: yes </ammo>	
+	</item>	
+</items> 
