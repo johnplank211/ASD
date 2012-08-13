@@ -387,11 +387,9 @@ $('#json').on('click', function(){
 			type: 'GET',
 			dataType: 'text',
 			success: function(answer) {
-			// splits data at new line
 				var line = answer.split('\n');
 				for (var i = 1, j = line.length; i <j; i++) {
 					var obj = line[i];
-					// splits each of the objects after the comma
 					var item = obj.split(',');
 					var itemList = $(
 						'<li>' +
@@ -419,8 +417,8 @@ $('#json').on('click', function(){
 					var firearm = $(this).find('firearm').text();
 					var ammo = $(this).find('ammo').text();
 					var apocalypse = $(this).find('apocalypse').text();
-					$('<div class="profViews" id="item'+id+'"></div>')
-						.html('<div>'+ apocalypse + '<br>' + firearm + '<br>' + ammo +'</div>')
+					$('<div class=items id=item' + id + '></div>')
+						.html('<div>' + apocalypse + '<br>' + firearm + '<br>' + ammo + '</div>')
 						.appendTo('#items');
 				});
 			}
