@@ -386,7 +386,7 @@ var changePage = function(pageId){
 			dataType: 'text',
 			success: function(answer) {
 				var line = answer.split('\n');
-				for (var i = 1, j = line.length; i <j; i++) {
+				for (var i = 1, x = line.length; i < x; i++) {
 					var obj = line[i];
 					var item = obj.split(',');
 					var itemList = $(
