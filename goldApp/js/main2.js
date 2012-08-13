@@ -347,40 +347,38 @@ var changePage = function(pageId){
 
 
 
-$('#json').on('click', function(){
-			
-			$('<h2>').html('JSON starts here').appendTo('#items');
-			$.ajax({
-				url: 'data.json',
-				type: 'GET',
-				dataType: 'json',
-				success: function(answer){
-					console.log(answer);
-
-					for (var i=0, j=answer.data1.length; i<j; i++){
-						
-						console.log(j);
-						var jdata = answer.data1[i];
+	$('#json').on('click', function(){			
+				$('<h2>').html('JSON starts here').appendTo('#items');
+				$.ajax({
+					url: 'data.json',
+					type: 'GET',
+					dataType: 'json',
+					success: function(answer){
 						console.log(answer);
 
-						$(''+
-							'<li>'+ 
-								jdata.fear +'<br />'+
-								jdata.apocalypse +'<br />'+
-								jdata.firearm +'<br />'+
-								jdata.ammo +'<br />'+
-								jdata.water +'<br />'+
-								jdata.p38 +'<br /><br />'+
-							'</li>'
-						).appendTo('#items');
-						console.log(answer);
+						for (var i=0, j=answer.data1.length; i<j; i++){
+							
+							console.log(j);
+							var jdata = answer.data1[i];
+							console.log(answer);
+
+							$(''+
+								'<li>'+ 
+									jdata.fear +'<br />'+
+									jdata.apocalypse +'<br />'+
+									jdata.firearm +'<br />'+
+									jdata.ammo +'<br />'+
+									jdata.water +'<br />'+
+									jdata.p38 +'<br /><br />'+
+								'</li>'
+							).appendTo('#items');
+							console.log(answer);
+						}
 					}
-				}
-			});
-	});
+				});
+		});
 
 	$('#csv').on('click', function(){
-		//$('#xmldiv').empty();
 		$('<h2>').html('CSV starts here').appendTo('#items');
 		$.ajax({
 			url: 'data.csv',
