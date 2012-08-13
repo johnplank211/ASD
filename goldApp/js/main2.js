@@ -399,7 +399,6 @@ var changePage = function(pageId){
 				}	
 			}
 		});
-		return false;
 	});
 
 	$('#xml').on('click', function(){
